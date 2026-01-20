@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MnR Fast Food — Home</title>
+  <meta name="description" content="MnR Fast Food — bold flavor, fast service. See our menu, prices, hours, and location." />
+  <style>
+    :root{
+      --red:#E11D2E;
+      --yellow:#FFCC00;
+      --ink:#141414;
+      --muted:#5b5b5b;
+      --bg:#ffffff;
+      --card:#fff;
+      --line:#f0f0f0;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% 0%, rgba(255,204,0,.18), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(225,29,46,.14), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:22px}
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      padding:10px 0;
+    }
+    .logo{
+      width:44px; height:44px;
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      flex:0 0 auto;
+      background:#fff;
+      border:1px solid var(--line);
+    }
+    .brand h1{
+      font-size:18px; margin:0; letter-spacing:.3px;
+    }
+    .brand p{margin:0; color:var(--muted); font-size:12px}
+    nav a{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid transparent;
+      color:var(--ink);
+      font-weight:600;
+      font-size:14px;
+    }
+    nav a:hover{border-color:var(--line); background:#fff}
+    nav a.active{
+      border-color: rgba(225,29,46,.25);
+      background: linear-gradient(90deg, rgba(225,29,46,.10), rgba(255,204,0,.12));
+    }
+
+    .hero{
+      display:grid; grid-template-columns: 1.15fr .85fr;
+      gap:20px;
+      align-items:stretch;
+      margin-top:18px;
+    }
+    .panel{
+      background:rgba(255,255,255,.88);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-left{padding:26px}
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,204,0,.18);
+      border: 1px solid rgba(255,204,0,.35);
+      font-weight:800;
+      color:#7a5b00;
+      letter-spacing:.3px;
+      font-size:12px;
+    }
+    .hero h2{
+      margin:14px 0 10px;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    .hero h2 .accent{color:var(--red)}
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.6;
+      max-width:58ch;
+    }
+    .cta{
+      display:flex; flex-wrap:wrap; gap:12px;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      font-weight:900;
+      border: 1px solid var(--line);
+      background:#fff;
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+    }
+    .btn.primary{
+      border-color: rgba(225,29,46,.35);
+      background: linear-gradient(135deg, rgba(225,29,46,.10), rgba(255,204,0,.16));
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .hero-right{
+      display:grid;
+      grid-template-rows: 1fr auto;
+    }
+    .img{
+      min-height:320px;
+      background:
+        linear-gradient(120deg, rgba(225,29,46,.10), rgba(255,204,0,.15)),
+        url("https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1400&q=70");
+      background-size: cover;
+      background-position:center;
+      border-bottom:1px solid var(--line);
+    }
+    .mini{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      padding:12px;
+    }
+    .chip{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding:12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.05);
+    }
+    .chip h3{margin:0 0 4px; font-size:14px}
+    .chip p{margin:0; color:var(--muted); font-size:12px; line-height:1.45}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+    .card{
+      padding:16px;
+      background:rgba(255,255,255,.9);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+    }
+    .card h3{margin:0 0 8px}
+    .card p{margin:0; color:var(--muted); line-height:1.6}
+    .tag{
+      display:inline-flex; align-items:center;
+      font-size:12px; font-weight:900;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(225,29,46,.10);
+      border:1px solid rgba(225,29,46,.22);
+      margin-bottom:10px;
+    }
+
+    footer{
+      margin-top:22px;
+      padding:18px 0 10px;
+      color:var(--muted);
+      font-size:13px;
+      border-top:1px solid var(--line);
+    }
+    .footer-row{
+      display:flex; flex-wrap:wrap;
+      align-items:center; justify-content:space-between;
+      gap:12px;
+    }
+    .footer-links a{
+      margin-right:12px;
+      font-weight:700;
+    }
+    .footer-links a:hover{color:var(--red)}
+
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .hero h2{font-size:36px}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="index.html" aria-label="Go to MnR homepage">
+          <div class="logo" aria-hidden="true">
+            <!-- Simple MnR logo (SVG) -->
+            <svg viewBox="0 0 64 64" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#E11D2E"/>
+                  <stop offset="1" stop-color="#FFCC00"/>
+                </linearGradient>
+              </defs>
+              <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#g)"/>
+              <path d="M18 44V20h6l8 14 8-14h6v24h-6V31.5l-8 13.5-8-13.5V44h-6Z" fill="#fff"/>
+              <circle cx="50" cy="18" r="6" fill="#fff" opacity=".9"/>
+            </svg>
+          </div>
+          <div>
+            <h1>MnR</h1>
+            <p>Fast Food • White / Red / Yellow</p>
+          </div>
+        </a>
+
+        <nav aria-label="Main navigation">
+          <a class="active" href="index.html">Home</a>
+          <a href="menu.html">Menu & Prices</a>
+          <a href="visit.html">Visit & Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="panel hero-left">
+        <div class="kicker">FAST • FRESH • FAVORITES</div>
+        <h2>
+          Welcome to <span class="accent">MnR</span> —<br/>
+          big flavor, zero waiting.
+        </h2>
+        <p>
+          MnR is a fast food chain built for people who want hot, crispy, and satisfying meals
+          without the slow line. We keep it simple: quality ingredients, bold seasoning, and fast service.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="menu.html">View Menu & Prices</a>
+          <a class="btn" href="visit.html">Find a Location</a>
+        </div>
+      </div>
+
+      <div class="panel hero-right">
+        <div class="img" role="img" aria-label="MnR burgers and fries photo"></div>
+        <div class="mini">
+          <div class="chip">
+            <h3>Signature Combo</h3>
+            <p>Burger + fries + drink — built to hit every time.</p>
+          </div>
+          <div class="chip">
+            <h3>Quick Pickup</h3>
+            <p>Order in-store and get your food fast.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="About MnR highlights">
+      <article class="card">
+        <div class="tag">Background Info</div>
+        <h3>How MnR started</h3>
+        <p>
+          MnR began as a simple idea: make fast food that tastes like someone actually cared.
+          We focused on a tight menu, consistent quality, and a clean, modern experience.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="tag" style="background: rgba(255,204,0,.18); border-color: rgba(255,204,0,.35); color:#7a5b00;">What we serve</div>
+        <h3>Fast food classics</h3>
+        <p>
+          Burgers, crispy chicken, fries, shakes, and drinks — with MnR sauces and seasoning.
+          See full items with prices on the Menu page.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="tag" style="background: rgba(225,29,46,.10);">Socials</div>
+        <h3>Stay connected</h3>
+        <p>
+          Instagram: <strong>@MnR_FastFood</strong><br/>
+          TikTok: <strong>@MnR_FastFood</strong><br/>
+          X (Twitter): <strong>@MnR_FastFood</strong>
+        </p>
+      </article>
+    </section>
+
+    <footer>
+      <div class="footer-row">
+        <div>
+          <strong>MnR</strong> © <span id="y"></span> • Fast Food Chain
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="visit.html">Visit</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
