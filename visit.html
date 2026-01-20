@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MnR Fast Food — Visit & Contact</title>
+  <meta name="description" content="MnR location, map, store hours, and contact information." />
+  <style>
+    :root{
+      --red:#E11D2E; --yellow:#FFCC00; --ink:#141414; --muted:#5b5b5b;
+      --line:#f0f0f0; --shadow: 0 10px 30px rgba(0,0,0,.08); --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% 0%, rgba(255,204,0,.18), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(225,29,46,.12), transparent 55%),
+        #fff;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:22px}
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.80);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px;}
+    .brand{display:flex; align-items:center; gap:12px; padding:10px 0;}
+    .logo{width:44px; height:44px; border-radius:14px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); background:#fff;}
+    .brand h1{font-size:18px; margin:0;}
+    .brand p{margin:0; color:var(--muted); font-size:12px}
+    nav a{
+      display:inline-flex; align-items:center;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-weight:700;
+      font-size:14px;
+    }
+    nav a:hover{border-color:var(--line); background:#fff}
+    nav a.active{
+      border-color: rgba(225,29,46,.25);
+      background: linear-gradient(90deg, rgba(225,29,46,.10), rgba(255,204,0,.12));
+    }
+
+    .head{
+      margin-top:16px;
+      background: rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+      padding:18px;
+      display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between;
+      gap:14px;
+    }
+    .head h2{margin:0; font-size:34px; letter-spacing:-.6px}
+    .head p{margin:6px 0 0; color:var(--muted); line-height:1.6; max-width:70ch}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    .panel{
+      background: rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+    .map{
+      width:100%;
+      height:420px;
+      border:0;
+      display:block;
+    }
+    .padded{padding:16px}
+    .line{border-top:1px solid var(--line); margin:14px 0}
+    .k{
+      display:flex; justify-content:space-between; gap:12px;
+      padding:8px 0;
+      border-bottom: 1px dashed #ededed;
+    }
+    .k:last-child{border-bottom:none}
+    .k strong{white-space:nowrap}
+    .muted{color:var(--muted)}
+    .pill{
+      display:inline-flex;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,204,0,.35);
+      background: rgba(255,204,0,.14);
+      font-weight:900;
+      color:#6b5200;
+      font-size:12px;
+    }
+    .photo{
+      min-height:180px;
+      background:
+        linear-gradient(120deg, rgba(225,29,46,.10), rgba(255,204,0,.15)),
+        url("https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=70");
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid var(--line);
+    }
+    footer{
+      margin-top:22px;
+      padding:18px 0 10px;
+      color:var(--muted);
+      font-size:13px;
+      border-top:1px solid var(--line);
+    }
+    .footer-row{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px}
+    .links a{margin-right:12px; font-weight:800}
+    .links a:hover{color:var(--red)}
+
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+      .head h2{font-size:30px}
+      .map{height:360px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="index.html" aria-label="Go to MnR homepage">
+          <div class="logo" aria-hidden="true">
+            <svg viewBox="0 0 64 64" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#E11D2E"/>
+                  <stop offset="1" stop-color="#FFCC00"/>
+                </linearGradient>
+              </defs>
+              <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#g)"/>
+              <path d="M18 44V20h6l8 14 8-14h6v24h-6V31.5l-8 13.5-8-13.5V44h-6Z" fill="#fff"/>
+              <circle cx="50" cy="18" r="6" fill="#fff" opacity=".9"/>
+            </svg>
+          </div>
+          <div>
+            <h1>MnR</h1>
+            <p>Visit & Contact</p>
+          </div>
+        </a>
+
+        <nav aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu & Prices</a>
+          <a class="active" href="visit.html">Visit & Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="head">
+      <div>
+        <h2>Visit MnR</h2>
+        <p>
+          Find us, check store hours, and reach out. This page includes our address, an embedded map,
+          social handles, and contact info.
+        </p>
+      </div>
+      <div class="pill">Open Daily</div>
+    </section>
+
+    <section class="grid" aria-label="Location map and contact details">
+      <div class="panel">
+        <!-- Location / Address -->
+        <!-- You can change the address text AND the map embed if your store is in a different city -->
+        <iframe
+          class="map"
+          title="MnR Location Map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=123%20Main%20St,%20Doylestown,%20PA%2018901&output=embed">
+        </iframe>
+        <div class="padded">
+          <strong>Address:</strong>
+          <span class="muted">123 Main St, Doylestown, PA 18901</span>
+          <div class="line"></div>
+          <div class="muted">
+            Tip: To change the map, replace the <strong>q=</strong> address in the iframe URL.
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="photo" role="img" aria-label="Fast food counter photo"></div>
+        <div class="padded">
+          <h3 style="margin:0 0 10px;">Store Hours</h3>
+
+          <div class="k"><span>Monday</span><strong>10:00 AM – 10:00 PM</strong></div>
+          <div class="k"><span>Tuesday</span><strong>10:00 AM – 10:00 PM</strong></div>
+          <div class="k"><span>Wednesday</span><strong>10:00 AM – 10:00 PM</strong></div>
+          <div class="k"><span>Thursday</span><strong>10:00 AM – 10:00 PM</strong></div>
+          <div class="k"><span>Friday</span><strong>10:00 AM – 11:00 PM</strong></div>
+          <div class="k"><span>Saturday</span><strong>10:00 AM – 11:00 PM</strong></div>
+          <div class="k"><span>Sunday</span><strong>11:00 AM – 9:00 PM</strong></div>
+
+          <div class="line"></div>
+
+          <h3 style="margin:0 0 10px;">Contact Info</h3>
+          <div class="k"><span>Email</span><strong>contact@mnrfastfood.com</strong></div>
+          <div class="k"><span>Phone</span><strong>(215) 555-0199</strong></div>
+
+          <div class="line"></div>
+
+          <h3 style="margin:0 0 10px;">Social Media</h3>
+          <div class="k"><span>Instagram</span><strong>@MnR_FastFood</strong></div>
+          <div class="k"><span>TikTok</span><strong>@MnR_FastFood</strong></div>
+          <div class="k"><span>X (Twitter)</span><strong>@MnR_FastFood</strong></div>
+
+          <div class="line"></div>
+
+          <div class="muted" style="font-size:14px; line-height:1.55;">
+            Want to see our food and prices? Head to the <a href="menu.html" style="font-weight:900; color:var(--red);">Menu</a>.
+            Or go <a href="index.html" style="font-weight:900; color:var(--red);">back to Home</a>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-row">
+        <div><strong>MnR</strong> • Visit & Contact</div>
+        <div class="links">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="visit.html">Visit</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
