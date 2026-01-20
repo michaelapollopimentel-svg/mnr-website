@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MnR Fast Food — Menu & Prices</title>
+  <meta name="description" content="MnR menu with descriptions and prices." />
+  <style>
+    :root{
+      --red:#E11D2E; --yellow:#FFCC00; --ink:#141414; --muted:#5b5b5b;
+      --line:#f0f0f0; --shadow: 0 10px 30px rgba(0,0,0,.08); --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1100px 600px at 0% 0%, rgba(255,204,0,.18), transparent 55%),
+        radial-gradient(900px 500px at 100% 10%, rgba(225,29,46,.12), transparent 55%),
+        #fff;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:22px}
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.80);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px;}
+    .brand{display:flex; align-items:center; gap:12px; padding:10px 0;}
+    .logo{width:44px; height:44px; border-radius:14px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); background:#fff;}
+    .brand h1{font-size:18px; margin:0;}
+    .brand p{margin:0; color:var(--muted); font-size:12px}
+    nav a{
+      display:inline-flex; align-items:center;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-weight:700;
+      font-size:14px;
+    }
+    nav a:hover{border-color:var(--line); background:#fff}
+    nav a.active{
+      border-color: rgba(225,29,46,.25);
+      background: linear-gradient(90deg, rgba(225,29,46,.10), rgba(255,204,0,.12));
+    }
+
+    .top{
+      display:flex; flex-wrap:wrap; gap:14px; align-items:flex-end; justify-content:space-between;
+      margin-top:16px;
+    }
+    .top h2{margin:0; font-size:34px; letter-spacing:-.6px}
+    .top p{margin:0; color:var(--muted); max-width:65ch; line-height:1.6}
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:16px;
+      margin-top:16px;
+    }
+    .section{
+      background: rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+    .section-head{
+      padding:14px 16px;
+      background: linear-gradient(135deg, rgba(225,29,46,.10), rgba(255,204,0,.16));
+      border-bottom:1px solid var(--line);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .section-head h3{margin:0; font-size:16px}
+    .badge{
+      font-size:12px;
+      font-weight:900;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid rgba(225,29,46,.18);
+    }
+
+    .items{padding:6px 16px 16px}
+    .item{
+      padding:12px 0;
+      border-bottom:1px dashed #ededed;
+    }
+    .item:last-child{border-bottom:none}
+    .row{
+      display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
+    }
+    .name{font-weight:900}
+    .price{
+      font-weight:1000;
+      color:var(--red);
+      white-space:nowrap;
+    }
+    .desc{margin:6px 0 0; color:var(--muted); line-height:1.55; font-size:14px}
+    .note{
+      margin-top:16px;
+      padding:14px 16px;
+      border:1px solid rgba(255,204,0,.35);
+      background: rgba(255,204,0,.14);
+      border-radius: var(--radius);
+      color:#6b5200;
+      line-height:1.55;
+      font-weight:700;
+    }
+
+    .banner{
+      margin-top:16px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      min-height:220px;
+      background:
+        linear-gradient(120deg, rgba(225,29,46,.10), rgba(255,204,0,.15)),
+        url("https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1400&q=70");
+      background-size:cover;
+      background-position:center;
+    }
+
+    footer{
+      margin-top:22px;
+      padding:18px 0 10px;
+      color:var(--muted);
+      font-size:13px;
+      border-top:1px solid var(--line);
+    }
+    .footer-row{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px}
+    .links a{margin-right:12px; font-weight:800}
+    .links a:hover{color:var(--red)}
+
+    @media (max-width: 900px){
+      .menu-grid{grid-template-columns:1fr}
+      .top h2{font-size:30px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="index.html" aria-label="Go to MnR homepage">
+          <div class="logo" aria-hidden="true">
+            <svg viewBox="0 0 64 64" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#E11D2E"/>
+                  <stop offset="1" stop-color="#FFCC00"/>
+                </linearGradient>
+              </defs>
+              <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#g)"/>
+              <path d="M18 44V20h6l8 14 8-14h6v24h-6V31.5l-8 13.5-8-13.5V44h-6Z" fill="#fff"/>
+              <circle cx="50" cy="18" r="6" fill="#fff" opacity=".9"/>
+            </svg>
+          </div>
+          <div>
+            <h1>MnR</h1>
+            <p>Menu & Prices</p>
+          </div>
+        </a>
+
+        <nav aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a class="active" href="menu.html">Menu & Prices</a>
+          <a href="visit.html">Visit & Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="top">
+      <div>
+        <h2>Menu & Prices</h2>
+        <p>All items include a description and a price. Combos include fries + a drink (see Combos).</p>
+      </div>
+    </div>
+
+    <div class="banner" role="img" aria-label="Chicken sandwich and fries photo"></div>
+
+    <section class="menu-grid" aria-label="MnR menu sections">
+      <div class="section">
+        <div class="section-head">
+          <h3>Burgers</h3>
+          <span class="badge">Hot & Juicy</span>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="row">
+              <div class="name">MnR Classic Burger</div>
+              <div class="price">$5.49</div>
+            </div>
+            <p class="desc">Beef patty, lettuce, tomato, pickles, MnR sauce on a toasted bun.</p>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="name">Double Stack</div>
+              <div class="price">$7.29</div>
+            </div>
+            <p class="desc">Two patties, double cheese, grilled onions, pickles, signature sauce.</p>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="name">Spicy Blaze Burger</div>
+              <div class="price">$6.49</div>
+            </div>
+            <p class="desc">Pepper-jack, jalapeños, crispy onions, spicy MnR mayo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <h3>Chicken</h3>
+          <span class="badge">Crispy</span>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="row">
+              <div class="name">Crispy Chicken Sandwich</div>
+              <div class="price">$5.99</div>
+            </div>
+            <p class="desc">Crunchy filet, pickles, mayo, toasted bun. Simple and elite.</p>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="name">Spicy Chicken Sandwich</div>
+              <div class="price">$6.29</div>
+            </div>
+            <p class="desc">Spice-seasoned filet, lettuce, pickles, spicy sauce.</p>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="name">Chicken Tenders (5pc)</div>
+              <div class="price">$6.79</div>
+            </div>
+            <p class="desc">Five hand-breaded tenders. Choose sauce: MnR, BBQ, Honey Mustard, Buffalo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <h3>Sides</h3>
+          <span class="badge">Golden</span>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="row">
+              <div class="name">Classic Fries</div>
+              <div class="price">$2.49</div>
+            </div>
+            <p class="desc">Crispy, salted, made for dipping.</p>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="name">Loaded Fries</div>
+              <div class="price">$3.99</div>
+            </div>
+            <p class="desc">Fries topped with cheese sauce, crispy bits, and MnR drizzle.</p>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="name">Onion Rings</div>
+              <div class="price">$3.29</div>
+            </div>
+            <p class="desc">Crunchy rings with a light, savory batter.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <h3>Drinks & Shakes</h3>
+          <span class="badge">Ice Cold</span>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="row">
+              <div class="name">Fountain Drink</div>
+              <div class="price">$1.99</div>
+            </div>
+            <p class="desc">Medium size. Coca-Cola products (or your local selection).</p>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="name">Lemonade</div>
+              <div class="price">$2.49</div>
+            </div>
+            <p class="desc">Bright, sweet-tart, served over ice.</p>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="name">Milkshake</div>
+              <div class="price">$3.79</div>
+            </div>
+            <p class="desc">Chocolate, vanilla, or strawberry — thick and creamy.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <h3>Combos</h3>
+          <span class="badge">Best Value</span>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="row">
+              <div class="name">Classic Burger Combo</div>
+              <div class="price">$8.49</div>
+            </div>
+            <p class="desc">MnR Classic Burger + fries + fountain drink.</p>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="name">Crispy Chicken Combo</div>
+              <div class="price">$8.99</div>
+            </div>
+            <p class="desc">Crispy Chicken Sandwich + fries + fountain drink.</p>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="name">Tenders Combo</div>
+              <div class="price">$9.49</div>
+            </div>
+            <p class="desc">5pc tenders + fries + fountain drink.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <h3>Dessert</h3>
+          <span class="badge">Sweet</span>
+        </div>
+        <div class="items">
+          <div class="item">
+            <div class="row">
+              <div class="name">Warm Cookie</div>
+              <div class="price">$1.49</div>
+            </div>
+            <p class="desc">Soft center, crispy edge, baked-style flavor.</p>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="name">Ice Cream Cup</div>
+              <div class="price">$1.99</div>
+            </div>
+            <p class="desc">Classic vanilla soft serve (or your store’s option).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="note">
+      <strong>Note:</strong> Prices are example prices for your project. You can edit any price or item name in this file.
+    </div>
+
+    <footer>
+      <div class="footer-row">
+        <div><strong>MnR</strong> • Menu & Prices</div>
+        <div class="links">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="visit.html">Visit</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
