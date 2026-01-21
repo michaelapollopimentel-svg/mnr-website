@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MnR Fast Food — Home</title>
-  <meta name="description" content="MnR Fast Food — bold flavor, fast service. See our menu, prices, hours, and location." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MnR Food & Drinks</title>
+  <meta name="description" content="MnR Food & Drinks — fast food done right. See our menu, prices, hours, and location." />
+
   <style>
     :root{
       --red:#E11D2E;
       --yellow:#FFCC00;
+      --white:#ffffff;
       --ink:#141414;
       --muted:#5b5b5b;
-      --bg:#ffffff;
-      --card:#fff;
-      --line:#f0f0f0;
-      --shadow: 0 10px 30px rgba(0,0,0,.08);
-      --radius: 18px;
+      --line:rgba(0,0,0,.08);
+      --shadow: 0 14px 30px rgba(0,0,0,.12);
+      --radius:18px;
     }
     *{box-sizing:border-box}
     body{
@@ -23,188 +23,210 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--ink);
       background:
-        radial-gradient(1200px 600px at 10% 0%, rgba(255,204,0,.18), transparent 55%),
-        radial-gradient(900px 500px at 90% 10%, rgba(225,29,46,.14), transparent 55%),
-        var(--bg);
+        radial-gradient(1200px 600px at 15% 0%, rgba(255,204,0,.25), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(225,29,46,.20), transparent 60%),
+        linear-gradient(180deg, #fff, #fff6f6);
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1100px; margin:0 auto; padding:22px}
+    .wrap{max-width:1120px; margin:0 auto; padding:20px}
+
+    /* Header */
     header{
       position:sticky; top:0; z-index:50;
-      background: rgba(255,255,255,.78);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
+      background: linear-gradient(90deg, var(--red), #ff3a30, var(--yellow));
+      box-shadow: 0 10px 24px rgba(0,0,0,.12);
     }
     .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:16px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
     }
     .brand{
       display:flex; align-items:center; gap:12px;
-      padding:10px 0;
+      padding:12px 0;
     }
     .logo{
-      width:44px; height:44px;
-      border-radius:14px;
-      box-shadow: var(--shadow);
+      width:52px; height:52px;
+      border-radius:16px;
       overflow:hidden;
-      flex:0 0 auto;
       background:#fff;
-      border:1px solid var(--line);
+      border:2px solid rgba(255,255,255,.55);
+      box-shadow: 0 10px 18px rgba(0,0,0,.18);
+      flex:0 0 auto;
     }
-    .brand h1{
-      font-size:18px; margin:0; letter-spacing:.3px;
+    .logo img{width:100%; height:100%; object-fit:cover; display:block}
+    .brand-title{display:flex; flex-direction:column; line-height:1.05}
+    .brand-title strong{color:#fff; font-size:18px; letter-spacing:.2px}
+    .brand-title span{color:rgba(255,255,255,.9); font-size:12px; font-weight:700}
+
+    nav{
+      display:flex; gap:10px; flex-wrap:wrap;
     }
-    .brand p{margin:0; color:var(--muted); font-size:12px}
     nav a{
-      display:inline-flex; align-items:center; gap:8px;
+      color:#fff;
+      font-weight:900;
+      font-size:14px;
       padding:10px 12px;
       border-radius:999px;
-      border:1px solid transparent;
-      color:var(--ink);
-      font-weight:600;
-      font-size:14px;
+      border:1px solid rgba(255,255,255,.25);
+      background: rgba(0,0,0,.10);
     }
-    nav a:hover{border-color:var(--line); background:#fff}
+    nav a:hover{background: rgba(255,255,255,.18)}
     nav a.active{
-      border-color: rgba(225,29,46,.25);
-      background: linear-gradient(90deg, rgba(225,29,46,.10), rgba(255,204,0,.12));
+      background: rgba(255,255,255,.22);
+      border-color: rgba(255,255,255,.45);
     }
 
+    /* Hero */
     .hero{
-      display:grid; grid-template-columns: 1.15fr .85fr;
-      gap:20px;
-      align-items:stretch;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
       margin-top:18px;
+      align-items:stretch;
     }
-    .panel{
-      background:rgba(255,255,255,.88);
+    .card{
+      background: rgba(255,255,255,.92);
       border:1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .hero-left{padding:26px}
-    .kicker{
+    .hero-left{padding:22px}
+    .badge{
       display:inline-flex; align-items:center; gap:10px;
       padding:8px 12px;
       border-radius:999px;
-      background: rgba(255,204,0,.18);
-      border: 1px solid rgba(255,204,0,.35);
-      font-weight:800;
-      color:#7a5b00;
-      letter-spacing:.3px;
+      background: rgba(255,204,0,.25);
+      border:1px solid rgba(255,204,0,.55);
+      font-weight:1000;
+      color:#6a5200;
       font-size:12px;
+      letter-spacing:.2px;
     }
-    .hero h2{
-      margin:14px 0 10px;
+    h1{
+      margin:12px 0 8px;
       font-size:44px;
       line-height:1.05;
       letter-spacing:-.8px;
     }
-    .hero h2 .accent{color:var(--red)}
-    .hero p{
+    h1 .accent{color:var(--red)}
+    .lead{
       margin:0;
       color:var(--muted);
       font-size:16px;
-      line-height:1.6;
-      max-width:58ch;
+      line-height:1.65;
+      max-width:62ch;
     }
-    .cta{
-      display:flex; flex-wrap:wrap; gap:12px;
-      margin-top:18px;
-    }
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
       padding:12px 16px;
       border-radius: 14px;
-      font-weight:900;
-      border: 1px solid var(--line);
+      font-weight:1000;
+      border:1px solid var(--line);
       background:#fff;
-      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      box-shadow: 0 10px 18px rgba(0,0,0,.10);
     }
     .btn.primary{
-      border-color: rgba(225,29,46,.35);
-      background: linear-gradient(135deg, rgba(225,29,46,.10), rgba(255,204,0,.16));
+      color:#fff;
+      border:0;
+      background: linear-gradient(135deg, var(--red), var(--yellow));
     }
     .btn:hover{transform: translateY(-1px)}
+
     .hero-right{
       display:grid;
-      grid-template-rows: 1fr auto;
+      grid-template-rows: 280px auto;
     }
-    .img{
-      min-height:320px;
+    .hero-img{
       background:
-        linear-gradient(120deg, rgba(225,29,46,.10), rgba(255,204,0,.15)),
-        url("https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1400&q=70");
+        linear-gradient(120deg, rgba(225,29,46,.20), rgba(255,204,0,.22)),
+        url("https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1600&q=70");
       background-size: cover;
       background-position:center;
       border-bottom:1px solid var(--line);
     }
-    .mini{
+    .quick{
+      padding:14px;
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:12px;
-      padding:12px;
     }
-    .chip{
-      background:#fff;
-      border:1px solid var(--line);
+    .mini{
       border-radius: 16px;
+      border:1px solid var(--line);
+      background:#fff;
       padding:12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.05);
+      box-shadow: 0 10px 18px rgba(0,0,0,.08);
     }
-    .chip h3{margin:0 0 4px; font-size:14px}
-    .chip p{margin:0; color:var(--muted); font-size:12px; line-height:1.45}
+    .mini strong{display:block; margin-bottom:4px}
+    .mini span{color:var(--muted); font-size:13px; line-height:1.45}
 
-    .grid{
+    /* Sections */
+    .grid3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:16px;
       margin-top:18px;
     }
-    .card{
+    .section-card{
       padding:16px;
-      background:rgba(255,255,255,.9);
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 12px 26px rgba(0,0,0,.06);
     }
-    .card h3{margin:0 0 8px}
-    .card p{margin:0; color:var(--muted); line-height:1.6}
     .tag{
-      display:inline-flex; align-items:center;
-      font-size:12px; font-weight:900;
+      display:inline-flex;
       padding:6px 10px;
       border-radius:999px;
+      font-weight:1000;
+      font-size:12px;
+      border:1px solid rgba(225,29,46,.28);
       background: rgba(225,29,46,.10);
-      border:1px solid rgba(225,29,46,.22);
       margin-bottom:10px;
     }
+    .tag.yellow{
+      border-color: rgba(255,204,0,.55);
+      background: rgba(255,204,0,.20);
+      color:#6a5200;
+    }
+    .section-card h2{
+      font-size:18px;
+      margin:0 0 8px;
+    }
+    .section-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
 
+    /* Footer */
     footer{
       margin-top:22px;
-      padding:18px 0 10px;
-      color:var(--muted);
-      font-size:13px;
-      border-top:1px solid var(--line);
+      border-top: 6px solid var(--yellow);
+      background: linear-gradient(90deg, rgba(225,29,46,.10), rgba(255,204,0,.18));
+      border-radius: var(--radius);
+      padding:14px 16px;
+      box-shadow: 0 10px 18px rgba(0,0,0,.08);
     }
     .footer-row{
-      display:flex; flex-wrap:wrap;
+      display:flex; flex-wrap:wrap; gap:12px;
       align-items:center; justify-content:space-between;
-      gap:12px;
+      color:#2a2a2a;
+      font-weight:800;
+      font-size:13px;
     }
     .footer-links a{
-      margin-right:12px;
-      font-weight:700;
+      margin-right:10px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.65);
+      border:1px solid rgba(0,0,0,.07);
     }
-    .footer-links a:hover{color:var(--red)}
+    .footer-links a:hover{background:#fff}
 
-    @media (max-width: 900px){
+    @media (max-width: 920px){
+      h1{font-size:36px}
       .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      .hero h2{font-size:36px}
+      .grid3{grid-template-columns:1fr}
+      .quick{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -214,30 +236,19 @@
     <div class="wrap">
       <div class="nav">
         <a class="brand" href="index.html" aria-label="Go to MnR homepage">
-          <div class="logo" aria-hidden="true">
-            <!-- Simple MnR logo (SVG) -->
-            <svg viewBox="0 0 64 64" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#E11D2E"/>
-                  <stop offset="1" stop-color="#FFCC00"/>
-                </linearGradient>
-              </defs>
-              <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#g)"/>
-              <path d="M18 44V20h6l8 14 8-14h6v24h-6V31.5l-8 13.5-8-13.5V44h-6Z" fill="#fff"/>
-              <circle cx="50" cy="18" r="6" fill="#fff" opacity=".9"/>
-            </svg>
+          <div class="logo">
+            <img src="logo.png" alt="MnR Food & Drinks logo" />
           </div>
-          <div>
-            <h1>MnR</h1>
-            <p>Fast Food • White / Red / Yellow</p>
+          <div class="brand-title">
+            <strong>MnR</strong>
+            <span>Food & Drinks</span>
           </div>
         </a>
 
         <nav aria-label="Main navigation">
           <a class="active" href="index.html">Home</a>
-          <a href="menu.html">Menu & Prices</a>
-          <a href="visit.html">Visit & Contact</a>
+          <a href="menu.html">Menu</a>
+          <a href="visit.html">Visit</a>
         </nav>
       </div>
     </div>
@@ -245,73 +256,69 @@
 
   <main class="wrap">
     <section class="hero">
-      <div class="panel hero-left">
-        <div class="kicker">FAST • FRESH • FAVORITES</div>
-        <h2>
-          Welcome to <span class="accent">MnR</span> —<br/>
-          big flavor, zero waiting.
-        </h2>
-        <p>
-          MnR is a fast food chain built for people who want hot, crispy, and satisfying meals
-          without the slow line. We keep it simple: quality ingredients, bold seasoning, and fast service.
+      <div class="card hero-left">
+        <div class="badge">Fast food that actually hits</div>
+        <h1>Welcome to <span class="accent">MnR</span>.</h1>
+        <p class="lead">
+          We’re all about hot food, quick service, and the kind of menu you can trust when you’re hungry and
+          don’t want to gamble. Burgers, crispy chicken, fries, shakes, and drinks—done simple, done right.
         </p>
 
         <div class="cta">
-          <a class="btn primary" href="menu.html">View Menu & Prices</a>
-          <a class="btn" href="visit.html">Find a Location</a>
+          <a class="btn primary" href="menu.html">See the Menu & Prices</a>
+          <a class="btn" href="visit.html">Find Us + Hours</a>
         </div>
       </div>
 
-      <div class="panel hero-right">
-        <div class="img" role="img" aria-label="MnR burgers and fries photo"></div>
-        <div class="mini">
-          <div class="chip">
-            <h3>Signature Combo</h3>
-            <p>Burger + fries + drink — built to hit every time.</p>
+      <div class="card hero-right">
+        <div class="hero-img" role="img" aria-label="Burger and fries photo"></div>
+        <div class="quick">
+          <div class="mini">
+            <strong>Most popular</strong>
+            <span>Classic Burger Combo (burger + fries + drink)</span>
           </div>
-          <div class="chip">
-            <h3>Quick Pickup</h3>
-            <p>Order in-store and get your food fast.</p>
+          <div class="mini">
+            <strong>Quick info</strong>
+            <span>Hours, location, map, and contact info are on the Visit page.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="grid" aria-label="About MnR highlights">
-      <article class="card">
-        <div class="tag">Background Info</div>
-        <h3>How MnR started</h3>
+    <section class="grid3" aria-label="About MnR and contacts">
+      <div class="card section-card">
+        <div class="tag">Background</div>
+        <h2>What MnR is</h2>
         <p>
-          MnR began as a simple idea: make fast food that tastes like someone actually cared.
-          We focused on a tight menu, consistent quality, and a clean, modern experience.
+          MnR started with one goal: make fast food that tastes like it was made on purpose. We keep the menu tight,
+          focus on consistency, and serve it fast.
         </p>
-      </article>
+      </div>
 
-      <article class="card">
-        <div class="tag" style="background: rgba(255,204,0,.18); border-color: rgba(255,204,0,.35); color:#7a5b00;">What we serve</div>
-        <h3>Fast food classics</h3>
+      <div class="card section-card">
+        <div class="tag yellow">Store Hours</div>
+        <h2>Open every day</h2>
         <p>
-          Burgers, crispy chicken, fries, shakes, and drinks — with MnR sauces and seasoning.
-          See full items with prices on the Menu page.
+          Weekdays: 10 AM – 10 PM<br/>
+          Fri–Sat: 10 AM – 11 PM<br/>
+          Sunday: 11 AM – 9 PM
         </p>
-      </article>
+      </div>
 
-      <article class="card">
-        <div class="tag" style="background: rgba(225,29,46,.10);">Socials</div>
-        <h3>Stay connected</h3>
+      <div class="card section-card">
+        <div class="tag">Socials + Contact</div>
+        <h2>Stay in touch</h2>
         <p>
           Instagram: <strong>@MnR_FastFood</strong><br/>
           TikTok: <strong>@MnR_FastFood</strong><br/>
-          X (Twitter): <strong>@MnR_FastFood</strong>
+          Email: <strong>contact@mnrfastfood.com</strong>
         </p>
-      </article>
+      </div>
     </section>
 
     <footer>
       <div class="footer-row">
-        <div>
-          <strong>MnR</strong> © <span id="y"></span> • Fast Food Chain
-        </div>
+        <div>MnR Food & Drinks © <span id="y"></span></div>
         <div class="footer-links">
           <a href="index.html">Home</a>
           <a href="menu.html">Menu</a>
